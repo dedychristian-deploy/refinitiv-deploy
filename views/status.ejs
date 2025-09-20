@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Service Status</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+      background: #f8f9fa;
+    }
+    .container {
+      display: flex;
+      gap: 20px;
+    }
+    .card {
+      width: 300px;
+      background: #fff;
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .card img {
+      width: 40px;
+      height: 40px;
+    }
+    .card h3 {
+      margin: 0.5rem 0;
+    }
+    .status-label {
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+    .running {
+      background-color: #28a745;
+      color: white;
+    }
+    .unknown {
+      background-color: #dc3545;
+      color: white;
+    }
+    .timestamp {
+      color: #666;
+      font-size: 0.8rem;
+    }
+  </style>
+
+  <script>
+  async function fetchStatus() {
+    const res = await fetch('/api/status');
+    const data = await res.json();
+
+    const container = document.querySelector('.container');
+    container.innerHTML = '';
+
+    data.forEach(svc => {
+      const cls = svc.status === 'RUNNING' ? 'running' : 'unknown';
+      const card = `
+        <div class="card">
+          <img src="/images/${svc.logo_url}" alt="logo">
+          <h3>${svc.service_name}</h3>
+          <div class="status-label ${cls}">${svc.status}</div>
+          <div class="timestamp">${new Date(svc.last_updated).toLocaleString()}</div>
+        </div>
+      `;
+      container.innerHTML += card;
+    });
+  }
+
+  setInterval(fetchStatus, 5000); // polling setiap 5 detik
+  window.onload = fetchStatus;
+</script>
+
+</head>
+<body>
+  <h1>🛰️ Data Feed Status</h1>
+  <div class="container">
+    <% services.forEach(svc => { 
+      const cls = svc.status === 'RUNNING' ? 'running' : 'unknown';
+    %>
+      <div class="card">
+        <img src="/images/<%= svc.logo_url %>" alt="logo">
+        <h3><%= svc.service_name %></h3>
+        <div class="status-label <%= cls %>"><%= svc.status %></div>
+        <div class="timestamp">
+          <%= new Date(svc.last_updated).toLocaleString() %>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+</body>
+</html>

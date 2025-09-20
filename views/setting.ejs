@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Server Setting</title>
+  <!--<link rel="shortcut icon" href="https://cdn.cnbcindonesia.com/cnbc/images/favicon.png?v=6.6.3">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">-->
+
+<link rel="shortcut icon" href="favicon.png">
+<link rel="stylesheet" href="/css/font.css">
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/material-icons.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<script src="/js/jquery.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+  <style>
+    body { font-family: 'Varela Round', sans-serif; background: #f5f5f5; font-size: 13px; }
+    .wrapper { display: flex; min-height: 100vh; }
+    .sidebar { width: 240px; background: #2c3e50; color: #ecf0f1; padding-top: 20px; position: fixed; top: 0; bottom: 0; }
+    .sidebar h4 { text-align: center; margin-bottom: 1rem; font-weight: bold; }
+    .sidebar ul { list-style: none; padding-left: 0; }
+    .sidebar ul li { padding: 10px 20px; }
+    .sidebar ul li:hover { background: #34495e; cursor: pointer; }
+    .sidebar ul li.active { background: #1abc9c; font-weight: bold; }
+    .sidebar ul li a { color: inherit; text-decoration: none; display: block; }
+    .content { margin-left: 250px; padding: 20px; flex-grow: 1; }
+    .card { margin-bottom: 20px; }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="sidebar">
+    <h4>PIPEBRIDGE</h4>
+    <ul>
+      <li><a href="/">Stock List</a></li>
+      <li><a href="/history">History</a></li>
+      <li class="active"><a href="/setting">Setting</a></li>
+      <li><a href="/user">User Management</a></li>
+      <li><a href="/logout">Log Out</a></li>
+    </ul>
+  </div>
+
+  <div class="content">
+    <div class="container-xl">
+      <div class="table-title mb-3">
+        <h2 class="mb-0">Server <b>Setting</b></h2>
+        <div id="alertBox" class="alert d-none"></div>
+      </div>
+
+<div class="card">
+        <div class="card-header text-white" style="background-color: #435d7d;">
+          <h5 class="mb-0">Edit Config</h5>
+        </div>
+        <div class="card-body">
+        <form id="configForm" method="POST" action="/api/save-config">
+  <div class="form-group">
+    <label>Active Server</label>
+    <select name="active" id="active" class="form-control">
+      <option value="MAIN">MAIN</option>
+      <option value="BACKUP">BACKUP</option>
+    </select>
+  </div>
+
+  <h5>Server Config</h5>
+<div class="form-row">
+  <!-- KIRI: MAIN SERVER -->
+  <div class="col-md-6">
+    <h6>Main Server</h6>
+    <input type="text" id="mainHost" name="mainHost" class="form-control mb-2" placeholder="Hostname">
+    <input type="text" id="mainPort" name="mainPort" class="form-control mb-2" placeholder="Port">
+    <input type="text" id="mainUser" name="mainUser" class="form-control mb-2" placeholder="User API" readonly>
+    <input type="text" id="mainAppid" name="mainAppid" class="form-control mb-2" placeholder="AppId API" readonly>
+  </div>
+
+  <!-- KANAN: BACKUP SERVER -->
+  <div class="col-md-6">
+    <h6>Backup Server</h6>
+    <input type="text" id="backupHost" name="backupHost" class="form-control mb-2" placeholder="Hostname">
+    <input type="text" id="backupPort" name="backupPort" class="form-control mb-2" placeholder="Port">
+    <input type="text" id="backupUser" name="backupUser" class="form-control mb-2" placeholder="User API" readonly>
+    <input type="text" id="backupAppid" name="backupAppid" class="form-control mb-2" placeholder="AppId API" readonly>
+  </div>
+</div>
+
+<button type="submit" class="btn btn-info mt-3">Save Config</button>
+
+</div>
+</form>
+      </div>
+      
+  <div class="card">
+  <div class="card-header text-white" style="background-color: #435d7d;">
+    <h5 class="mb-0">Database Config (.env)</h5>
+  </div>
+  <div class="card-body">
+    <form id="formDbConfig" method="POST" action="/api/save-db-config">
+      <input type="text" id="dbHost" class="form-control mb-2" placeholder="DB Host">
+      <input type="text" id="dbPort" class="form-control mb-2" placeholder="DB Port">
+      <input type="text" id="dbName" class="form-control mb-2" placeholder="DB Name">
+      <input type="text" id="dbUser" class="form-control mb-2" placeholder="DB User">
+      <input type="password" id="dbPass" class="form-control mb-2" placeholder="DB Password">
+      <button type="submit" class="btn btn-info">Save DB Config</button>
+   </form> 
+  </div>
+  </div>
+
+<div class="card">
+  <div class="card-header text-white" style="background-color: #435d7d;">
+    <h5 class="mb-0">Market Session (Jam Buka / Tutup)</h5>
+  </div>
+  <div class="card-body">
+  <form id="formMarketHours" method="POST" action="/api/save-market-hours">
+    <label>Session 1 (Pagi)</label>
+    <div class="form-row mb-2">
+      <div class="col">
+        <input type="time" id="session1Open" class="form-control">
+      </div>
+      <div class="col">
+        <input type="time" id="session1Close" class="form-control">
+      </div>
+    </div>
+
+    <label>Session 2 (Siang)</label>
+    <div class="form-row mb-2">
+      <div class="col">
+        <input type="time" id="session2Open" class="form-control">
+      </div>
+      <div class="col">
+        <input type="time" id="session2Close" class="form-control">
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-info">Save Market Session</button>
+  </form>
+</div>
+
+</div>
+
+<div class="card">
+        <div class="card-header text-white" style="background-color: #435d7d;">
+          <h5 class="mb-0">Edit Ticker Config</h5>
+        </div>
+        <div class="card-body">
+        <form id="configtickerForm" method="POST" action="/api/save-config-ticker">
+
+<div class="form-row">
+  <!-- KIRI: MAIN SERVER -->
+  <div class="col-md-6">
+    <h6>Ticker Main</h6>
+    <input type="text" id="tickermainHost" name="tickermainHost" class="form-control mb-2" placeholder="Hostname">
+    <input type="text" id="tickermainPort" name="tickermainPort" class="form-control mb-2" placeholder="Port">
+  </div>
+
+  <!-- KANAN: BACKUP SERVER -->
+  <div class="col-md-6">
+    <h6>Ticker Backup</h6>
+    <input type="text" id="tickerbackupHost" name="tickerbackupHost" class="form-control mb-2" placeholder="Hostname">
+    <input type="text" id="tickerbackupPort" name="tickerbackupPort" class="form-control mb-2" placeholder="Port">
+ </div>
+</div>
+
+<button type="submit" class="btn btn-info mt-3">Save Ticker Config</button>
+
+</div>
+</form>
+      </div>
+
+
+      
+    </div>
+  </div>
+</div>
+
+<script>
+async function loadtickerConfig() {
+  try {
+    const res = await fetch('/api/get-ticker-config');
+    //const res = await fetch('/api/get-viz-config');
+    const cfg = await res.json();
+
+    document.getElementById('tickermainHost').value = cfg.servers.MAIN.hostname;
+    document.getElementById('tickermainPort').value = cfg.servers.MAIN.port;
+
+    document.getElementById('tickerbackupHost').value = cfg.servers.BACKUP.hostname;
+    document.getElementById('tickerbackupPort').value = cfg.servers.BACKUP.port;
+
+  } catch (e) {
+    console.error('Gagal load config', e);
+  }
+}
+
+
+//save
+// =================== SAVE TICKER CONFIG ===================
+  document.getElementById('configtickerForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const body = {
+      tickermainHost: document.getElementById('tickermainHost').value,
+      tickermainPort: document.getElementById('tickermainPort').value,
+      tickerbackupHost: document.getElementById('tickerbackupHost').value,
+      tickerbackupPort: document.getElementById('tickerbackupPort').value
+    };
+
+    try {
+      const res = await fetch('/api/save-ticker-config', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+
+      const result = await res.json();
+
+      if (result.success) {
+        showAlert(result.message || '✅ Config Ticker disimpan', 'success');
+      } else {
+        showAlert(result.message || '❌ Gagal simpan config Ticker', 'danger');
+      }
+
+    } catch (err) {
+      showAlert('❌ Error: ' + err.message, 'danger');
+    }
+  });
+
+document.addEventListener('DOMContentLoaded', loadtickerConfig);
+</script>
+
+
+<script>
+async function loadConfig() {
+  try {
+    const res = await fetch('/api/get-config');
+    const cfg = await res.json();
+
+document.getElementById('active').value = cfg.active;
+document.getElementById('mainHost').value = cfg.servers.MAIN.hostname;
+document.getElementById('mainPort').value = cfg.servers.MAIN.port;
+document.getElementById('mainUser').value = cfg.servers.MAIN.user;
+document.getElementById('mainAppid').value = cfg.servers.MAIN.appId;
+
+document.getElementById('backupHost').value = cfg.servers.BACKUP.hostname;
+document.getElementById('backupPort').value = cfg.servers.BACKUP.port;
+document.getElementById('backupUser').value = cfg.servers.BACKUP.user;
+document.getElementById('backupAppid').value = cfg.servers.BACKUP.appId;
+
+  } catch (e) {
+    console.error('Gagal load config', e);
+  }
+}
+
+
+//bagian db config
+async function loadDBConfig() {
+  try {
+    const res = await fetch('/api/get-db-config');
+    const config = await res.json();
+
+    document.getElementById('dbHost').value = config.dbHost;
+    document.getElementById('dbPort').value = config.dbPort;
+    document.getElementById('dbName').value = config.dbName;
+    document.getElementById('dbUser').value = config.dbUser;
+    document.getElementById('dbPass').value = config.dbPass;
+
+    // Market session
+    if (config.sessions && config.sessions.length > 0) {
+      document.getElementById('session1Open').value = config.sessions[0].open;
+      document.getElementById('session1Close').value = config.sessions[0].close;
+    }
+    if (config.sessions.length > 1) {
+      document.getElementById('session2Open').value = config.sessions[1].open;
+      document.getElementById('session2Close').value = config.sessions[1].close;
+    }
+
+  } catch (e) {
+    console.error('❌ Gagal load DB config:', e);
+  }
+}
+
+// =================== SAVE SERVER SETTING ===================
+document.getElementById('configForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+ const body = {
+  active: document.getElementById('active').value,
+  mainHost: document.getElementById('mainHost').value,
+  mainPort: document.getElementById('mainPort').value,
+  mainUser: document.getElementById('mainUser').value,
+  mainAppid: document.getElementById('mainAppid').value,
+  backupHost: document.getElementById('backupHost').value,
+  backupPort: document.getElementById('backupPort').value,
+  backupUser: document.getElementById('backupUser').value,
+  backupAppid: document.getElementById('backupAppid').value
+};
+
+
+  try {
+    const res = await fetch('/api/save-config', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+    if (res.ok) {
+      showAlert('Config berhasil disimpan ✅', 'success');
+    } else {
+      showAlert('Gagal simpan config ❌', 'danger');
+    }
+  } catch (err) {
+    showAlert('Error: ' + err.message, 'danger');
+  }
+});
+
+// =================== SAVE MARKET HOURS ===================
+document.getElementById('formMarketHours').addEventListener('submit', async function (e) {
+  e.preventDefault();
+
+  const body = {
+    session1Open: document.getElementById('session1Open').value,
+    session1Close: document.getElementById('session1Close').value,
+    session2Open: document.getElementById('session2Open').value,
+    session2Close: document.getElementById('session2Close').value
+  };
+
+  try {
+    const res = await fetch('/api/save-market-hours', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+
+    const result = await res.json();
+    showAlert(result.message || '✅ Market hours saved', 'success');
+  } catch (err) {
+    showAlert('❌ Gagal simpan market hours', 'danger');
+  }
+});
+
+// =================== SAVE DB CONFIG ===================
+document.getElementById('formDbConfig').addEventListener('submit', async function (e) {
+  e.preventDefault();
+
+  const body = {
+    dbHost: document.getElementById('dbHost').value,
+    dbPort: document.getElementById('dbPort').value,
+    dbName: document.getElementById('dbName').value,
+    dbUser: document.getElementById('dbUser').value,
+    dbPass: document.getElementById('dbPass').value
+  };
+
+  try {
+    const res = await fetch('/api/save-db-config', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+
+    const result = await res.json();
+    showAlert(result.message || '✅ DB config saved', 'success');
+  } catch (err) {
+    showAlert('❌ Gagal simpan DB config', 'danger');
+  }
+});
+
+
+function showAlert(msg, type) {
+  const box = document.getElementById('alertBox');
+  box.textContent = msg;
+  box.className = 'alert alert-' + type;
+  box.classList.remove('d-none');
+  setTimeout(() => box.classList.add('d-none'), 4000);
+}
+
+
+
+
+
+loadConfig();
+loadDBConfig();
+</script>
+</body>
+</html>

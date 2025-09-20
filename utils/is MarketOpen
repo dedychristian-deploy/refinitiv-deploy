@@ -1,0 +1,18 @@
+const fs = require('fs');
+
+function isMarketOpen() {
+  const now = new Date();
+  const hours = now.getHours();
+  const minutes = now.getMinutes();
+
+  const pad = (n) => n.toString().padStart(2, '0');
+  const currentTime = `${pad(hours)}:${pad(minutes)}`;
+
+  const config = JSON.parse(fs.readFileSync('./settings/session-config.json', 'utf-8'));
+
+  return config.sessions.some(session => {
+    return currentTime >= session.open && currentTime <= session.close;
+  });
+}
+
+module.exports = { isMarketOpen };

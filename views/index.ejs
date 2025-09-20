@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>CNBC INDONESIA PIPEBRIDGE</title>
+  <!--<link rel="shortcut icon" href="https://cdn.cnbcindonesia.com/cnbc/images/favicon.png?v=6.6.3">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>-->
+
+<link rel="shortcut icon" href="favicon.png">
+<link rel="stylesheet" href="/css/font.css">
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/material-icons.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<script src="/js/jquery.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+
+  <style>
+    body {
+      font-family: 'Varela Round', sans-serif;
+      background: #f5f5f5;
+      color: #566787;
+      font-size: 13px;
+    }
+    .wrapper {
+      display: flex;
+      min-height: 100vh;
+    }
+    .sidebar {
+      width: 240px;
+      background: #2c3e50;
+      color: #ecf0f1;
+      padding-top: 20px;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+    }
+    .sidebar h4 {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+        .sidebar ul { list-style: none; padding-left: 0; }
+    .sidebar ul li { padding: 10px 20px; }
+    .sidebar ul li:hover { background: #34495e; cursor: pointer; }
+    .sidebar ul li.active { background: #1abc9c; font-weight: bold; }
+    .sidebar ul li a { color: inherit; text-decoration: none; display: block; }
+    .content {
+      margin-left: 240px;
+      margin-right: 0px;
+      margin-top: 10px;
+      padding: 0px;
+      flex-grow: 1;
+    
+}
+
+
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 10px 15px;
+  background: #435d7d;
+  color: #fff;
+  border-radius: 4px;
+}
+
+
+.table-title {        
+	padding: 16px 30px;
+	background: #435d7d;
+	color: #fff;
+	width: 100%;              /* ✅ cukup full width */
+	margin: 0;                /* ✅ hilangin margin negatif */
+	
+}
+
+    .table-title h2 {
+      margin: 5px 0 0;
+      font-size: 24px;
+    }
+
+    body {
+	color: #566787;
+	background: #f5f5f5;
+	font-family: 'Varela Round', sans-serif;
+	font-size: 13px;
+  width: 100%;
+  overflow-x: hidden; /* hilangin scroll global */
+}
+.container-xl {
+	  max-width: 100% !important; /* jangan ada width fix */
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.table-responsive {
+    margin: 0px 0;
+	overflow-x: auto;
+}
+.table-wrapper {
+	background: #fff;
+	padding: 10px 15px;   /* sebelumnya 20px 25px */
+	border-radius: 3px;
+	width: 100%;
+	max-width: 100%;
+	box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  overflow-x: auto; 
+}
+/* ... (lanjutkan CSS seperti sebelumnya) ... */
+
+
+
+.table-title .btn-group {
+	float: right;
+}
+.table-title .btn {
+	color: #fff;
+	float: right;
+	font-size: 13px;
+	border: none;
+	min-width: 50px;
+	border-radius: 2px;
+	border: none;
+	outline: none !important;
+	margin-left: 10px;
+}
+.table-title .btn i {
+	float: left;
+	font-size: 21px;
+	margin-right: 5px;
+}
+.table-title .btn span {
+	float: left;
+	margin-top: 2px;
+}
+table.table tr th, table.table tr td {
+	border-color: #e9e9e9;
+	padding: 12px 15px;
+	vertical-align: middle;
+}
+table.table tr th:first-child {
+	width: 60px;
+}
+table.table tr th:last-child {
+	width: 100px;
+}
+table.table-striped tbody tr:nth-of-type(odd) {
+	background-color: #fcfcfc;
+}
+table.table-striped.table-hover tbody tr:hover {
+	background: #f5f5f5;
+}
+table.table th i {
+	font-size: 13px;
+	margin: 0 5px;
+	cursor: pointer;
+}	
+table.table td:last-child i {
+	opacity: 0.9;
+	font-size: 22px;
+	margin: 0 5px;
+}
+table.table td a {
+	font-weight: bold;
+	color: #566787;
+	display: inline-block;
+	text-decoration: none;
+	outline: none !important;
+  max-height: 1px;
+}
+table.table td a:hover {
+	color: #2196F3;
+}
+table.table td a.edit {
+	color: #FFC107;
+}
+table.table td a.delete {
+	color: #F44336;
+}
+table.table td i {
+	font-size: 19px;
+}
+table.table .avatar {
+	border-radius: 50%;
+	vertical-align: middle;
+	margin-right: 10px;
+}
+.pagination {
+	float: right;
+	margin: 0 0 5px;
+}
+.pagination li a {
+	border: none;
+	font-size: 13px;
+	min-width: 30px;
+	min-height: 30px;
+	color: #999;
+	margin: 0 2px;
+	line-height: 30px;
+	border-radius: 2px !important;
+	text-align: center;
+	padding: 0 6px;
+}
+.pagination li a:hover {
+	color: #666;
+}	
+.pagination li.active a, .pagination li.active a.page-link {
+	background: #03A9F4;
+}
+.pagination li.active a:hover {        
+	background: #0397d6;
+}
+.pagination li.disabled i {
+	color: #ccc;
+}
+.pagination li i {
+	font-size: 16px;
+	padding-top: 6px
+}
+.hint-text {
+	float: left;
+	margin-top: 10px;
+	font-size: 13px;
+}    
+/* Custom checkbox */
+.custom-checkbox {
+	position: relative;
+}
+.custom-checkbox input[type="checkbox"] {    
+	opacity: 0;
+	position: absolute;
+	margin: 5px 0 0 3px;
+	z-index: 9;
+}
+.custom-checkbox label:before{
+	width: 18px;
+	height: 18px;
+}
+.custom-checkbox label:before {
+	content: '';
+	margin-right: 10px;
+	display: inline-block;
+	vertical-align: text-top;
+	background: white;
+	border: 1px solid #bbb;
+	border-radius: 2px;
+	box-sizing: border-box;
+	z-index: 2;
+}
+.custom-checkbox input[type="checkbox"]:checked + label:after {
+	content: '';
+	position: absolute;
+	left: 6px;
+	top: 3px;
+	width: 6px;
+	height: 11px;
+	border: solid #000;
+	border-width: 0 3px 3px 0;
+	transform: inherit;
+	z-index: 3;
+	transform: rotateZ(45deg);
+}
+.custom-checkbox input[type="checkbox"]:checked + label:before {
+	border-color: #03A9F4;
+	background: #03A9F4;
+}
+.custom-checkbox input[type="checkbox"]:checked + label:after {
+	border-color: #fff;
+}
+.custom-checkbox input[type="checkbox"]:disabled + label:before {
+	color: #b8b8b8;
+	cursor: auto;
+	box-shadow: none;
+	background: #ddd;
+}
+/* Modal styles */
+.modal .modal-dialog {
+	max-width: 400px;
+}
+.modal .modal-header, .modal .modal-body, .modal .modal-footer {
+	padding: 20px 30px;
+}
+.modal .modal-content {
+	border-radius: 3px;
+	font-size: 14px;
+}
+.modal .modal-footer {
+	background: #ecf0f1;
+	border-radius: 0 0 3px 3px;
+}
+.modal .modal-title {
+	display: inline-block;
+}
+.modal .form-control {
+	border-radius: 2px;
+	box-shadow: none;
+	border-color: #dddddd;
+}
+.modal textarea.form-control {
+	resize: vertical;
+}
+.modal .btn {
+	border-radius: 2px;
+	min-width: 100px;
+}	
+.modal form label {
+	font-weight: normal;
+}	
+
+.clearfix {
+  margin-top: 15px;   /* kasih jarak ke atas */
+}
+.hint-text {
+  margin: 0;          /* biar rapi */
+}
+.pagination {
+  margin: 0;          /* buang margin default */
+}
+
+#serverStatusRow {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  margin-top: 10px;
+}
+
+.server-status {
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;   /* biar konsisten sama table-wrapper */
+  padding-right: 0;
+}
+.server-status .card {
+  margin-right: 15px; /* jarak antar card */
+}
+
+.server-status h4 {
+  margin-left: 0;
+  padding-left: 0;   /* buang padding */
+}
+
+
+
+
+
+
+
+  </style>
+
+
+</head>
+<body>
+  <div class="wrapper">
+    <div class="sidebar">
+      <h4>PIPEBRIDGE</h4>
+      <ul>
+
+        
+  <li class="active"><a href="/" style="color:inherit;text-decoration:none">Stock List</a></li>
+        <li><a href="/history" style="color:inherit;text-decoration:none">History</a></li>
+        <li><a href="/setting" style="color:inherit;text-decoration:none">Setting</a></li>
+        <li><a href="/user" style="color:inherit;text-decoration:none">User Management</a></li>
+        <li><a href="/logout" style="color:inherit;text-decoration:none">Log Out</a></li>
+      </ul>
+    </div>
+    <div class="content">
+      <!-- existing index.ejs content starts here -->
+      <div class="container-xl">
+	<div class="table-responsive">
+<!-- ✅ GANTI BAGIAN INI -->
+<div class="server-status mb-3 px-0">
+   <div class="table-title">
+  <div class="d-flex justify-content-between align-items-center">
+    <h2 class="mb-0">Server <b>Status</b></h2>
+    
+
+</div>
+
+</div>
+<div id="serverStatusRow" class="d-flex flex-wrap justify-content-start">
+ <!-- Kartu MAIN -->
+<div class="card shadow-sm mb-3 mr-3" style="min-width:250px">
+  <div class="card-body">
+    <h5 class="card-title">
+      TREP MAIN 
+      <span id="badge-active-main" class="badge badge-info ml-2 d-none">ACTIVE</span>
+    </h5>
+    <p class="card-text text-muted" id="host-main">Checking...</p>
+    <span class="badge" id="status-main">Checking...</span>
+    <div class="text-muted small mt-2" id="time-main">-</div>
+  </div>
+</div>
+
+<!-- Kartu BACKUP -->
+<div class="card shadow-sm mb-3 mr-3" style="min-width:250px">
+  <div class="card-body">
+    <h5 class="card-title">
+      TREP BACKUP 
+      <span id="badge-active-backup" class="badge badge-info ml-2 d-none">ACTIVE</span>
+    </h5>
+    <p class="card-text text-muted" id="host-backup">Checking...</p>
+    <span class="badge" id="status-backup">Checking...</span>
+    <div class="text-muted small mt-2" id="time-backup">-</div>
+  </div>
+</div>
+
+<!-- Kartu Realtime Client -->
+<div class="card shadow-sm mb-3 mr-3" style="min-width:250px">
+  <div class="card-body">
+    <h5 class="card-title mb-0">
+      Realtime Consumer 
+      <span id="badge-active-client" class="badge badge-info ml-2 d-none">ACTIVE</span>
+    </h5>
+
+    <p class="card-text text-muted mt-2" id="host-clientf">LOCALHOST</p>
+    <span class="badge" id="status-client">RUNNING</span>
+    <div class="text-muted small mt-2" id="time-client">18/9/2025, 15.24.31</div>
+
+    
+    <div class="mt-3">
+      <button id="btnRefreshClient" class="btn btn-sm btn-outline-primary" hidden>
+        🔄 Refresh
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Kartu Push Ticker Main -->
+<div class="card shadow-sm mb-3 mr-3" style="min-width:250px">
+  <div class="card-body">
+    <h5 class="card-title mb-0">
+      Ticker Main 
+      <span id="badge-active-ticker-main" class="badge ml-2 d-none">STATUS</span>
+    </h5>
+
+    <p class="card-text text-muted mt-2" id="host-ticker-main">Loading...</p>
+    <span class="badge" id="status-ticker-main" hidden>-</span>
+    <div class="text-muted small mt-2" id="time-ticker-main"></div>
+
+    <div class="mt-3">
+      <button id="btnToggleMain" class="btn btn-sm btn-secondary">
+        ⏯️ Toggle
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Kartu Push Ticker backup -->
+<div class="card shadow-sm mb-3 mr-3" style="min-width:250px">
+  <div class="card-body">
+    <h5 class="card-title mb-0">
+      Ticker Backup 
+      <span id="badge-active-ticker-backup" class="badge ml-2 d-none">STATUS</span>
+    </h5>
+
+    <p class="card-text text-muted mt-2" id="host-ticker-backup">Loading...</p>
+    <span class="badge" id="status-ticker-backup" hidden>-</span>
+    <div class="text-muted small mt-2" id="time-ticker-backup"></div>
+
+    <div class="mt-3">
+      <button id="btnTogglebackup" class="btn btn-sm btn-secondary">
+        ⏯️ Toggle
+      </button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+ <div class="table-title">
+  <div class="d-flex justify-content-between align-items-center">
+    <h2 class="mb-0">Manage <b>Stocks</b></h2>
+    <div class="d-flex align-items-center" style="gap: 10px;">
+      <div class="input-group" style="max-width: 250px;">
+        <div class="input-group-prepend">
+          <span class="input-group-text">🔍</span>
+        </div>
+        <input type="text" class="form-control" id="searchInput" placeholder="Enter RIC (e.g. BBCA.JK)" oninput="filterTable()">
+      </div>
+      <a href="#addRicModal" class="btn btn-info" data-toggle="modal">
+        <i class="material-icons">&#xE147;</i> <span>Add New RIC</span>
+      </a>
+    </div>
+
+</div>
+
+</div>
+    
+			<table class="table table-striped table-hover">
+				<thead>
+					<tr>
+        <th>Code</th>
+		<!--<th>Refinitiv Name</th>-->
+        <th>Stock Name</th>
+        <th>Last Price</th>
+        <th>Change</th>
+        <th>% Change</th>
+        <th>Bid</th>
+        <th>Ask</th>
+        <th>Volume</th>
+        <th>Updated</th>
+        <th>Action</th>
+					</tr>
+				</thead>
+
+      <tbody id="stock-body">
+
+
+    </tbody>
+    <div class="clearfix" >
+       <div class="hint-text">Showing <span id="showing-count"></span></div>
+        <ul class="pagination" id="pagination"></ul>
+     </div>
+			</table>
+
+</div>
+		</div>
+	</div>        
+</div>
+
+<!-- Modal Server Setting -->
+<!-- Modal -->
+<div class="modal fade" id="serverSettingModal" tabindex="-1" role="dialog" aria-labelledby="serverSettingModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <form id="server-config-form" class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Server Connection Settings</h5>
+        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+      </div>
+      <div class="modal-body">
+
+        <div class="form-group">
+          <label for="active">Active Server</label>
+          <select id="active" class="form-control" name="active">
+            <option value="MAIN">MAIN</option>
+            <option value="BACKUP">BACKUP</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="main-host">MAIN Host</label>
+          <input type="text" id="main-host" name="main-host" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="main-port">MAIN Port</label>
+          <input type="text" id="main-port" name="main-port" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="backup-host">BACKUP Host</label>
+          <input type="text" id="backup-host" name="backup-host" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="backup-port">BACKUP Port</label>
+          <input type="text" id="backup-port" name="backup-port" class="form-control">
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save Settings</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!-- Add Modal -->
+<div id="addRicModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="addRicForm" onsubmit="handleAddRIC(event)">
+        <div class="modal-header">
+          <h5 class="modal-title">Add New RIC</h5>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+			<label>Stock Code</label>
+          <input type="text" class="form-control mb-2" id="ricField" placeholder="RIC (e.g. BBCA.JK)" required>
+		  <label>Custom Name</label>
+          <input type="text" class="form-control mb-2" id="nameField" placeholder="Custom Name">
+      <label>Kategori</label>
+      <select id="categoryField" class="form-control">
+        <option value="SAHAM">SAHAM</option>
+        <option value="IDX">IDX</option>
+        <option value="FX">FX</option>
+        <option value="BOND">BOND</option>
+        <option value="BOND_OTC">BOND_OTC</option>
+        <option value="SBN">SBN</option>
+      </select>
+          <div id="addErrorMsg" class="text-danger"></div>
+      <label for="edit-ticker-active">Tampilkan di Ticker</label><br>
+          <input type="checkbox" id="tickerField"> Aktif
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-success">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Modal -->
+<div id="editModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="POST" action="/edit" id="formEdit">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit RIC</h5>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="stock_id" id="edit-id">
+		  <label>Stock Code</label>
+          <input type="text" class="form-control mb-2" name="code_b" id="edit-ric" required>
+		  <label>Refinitiv Name</label>
+          <input type="text" class="form-control mb-2" name="custom_name" id="edit-refinitiv" readonly>
+		  <label>Custom Name</label>
+          <input type="text" class="form-control mb-2" name="stockname" id="edit-name">
+              <label>Kategori</label>
+      <select id="edit-category" name="category1" class="form-control">
+        <option value="SAHAM">SAHAM</option>
+        <option value="IDX">IDX</option>
+        <option value="FX">FX</option>
+        <option value="BOND">BOND</option>
+        <option value="BOND_OTC">BOND_OTC</option>
+        <option value="SBN">SBN</option>
+      </select>
+      <label for="edit-ticker-active">Tampilkan di Ticker</label><br>
+          <input type="checkbox" name="ticker_active" id="edit-ticker-active"> Aktif 
+
+      <!--<label>Tampilkan di ticker</label>
+          <input type="text" class="form-control mb-2" id="edit-ticker-active">-->
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-info">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Modal HTML -->
+<div id="deleteModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="POST" action="/delete">
+        <div class="modal-header">						
+          <h4 class="modal-title">Delete RIC</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">					
+          <p>Are you sure you want to delete <strong id="delete-ric-label"></strong>?</p>
+          <p class="text-warning"><small>This action cannot be undone.</small></p>
+          <input type="hidden" name="id" id="delete-id">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+
+<script>
+document.getElementById('formEdit').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const formData = new URLSearchParams(new FormData(form));
+
+  try {
+    const response = await fetch('/edit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: formData
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      // ✅ Simpan nilai pencarian sebelum reload
+      const searchInput = document.getElementById('searchInput');
+      if (searchInput && searchInput.value) {
+        localStorage.setItem('searchBoxValue', searchInput.value);
+      }
+
+      $('#editModal').modal('hide');
+      location.reload(); // ⬅️ setelah simpan nilai
+    } else {
+      alert(result.message || '❌ Gagal update');
+    }
+  } catch (err) {
+    console.error('❌ Fetch error:', err);
+    alert('❌ Gagal mengirim data.');
+  }
+});
+
+</script>
+
+
+
+<script>
+	let allStockData = [];
+  let currentPage = 1;
+  const rowsPerPage = 15;
+
+function openEditModal(stock_id, code_b,abbrl, stockname,category1, ticker_active) {
+  document.getElementById('edit-id').value = stock_id;
+  document.getElementById('edit-ric').value = code_b;
+  document.getElementById('edit-refinitiv').value = abbrl;
+  document.getElementById('edit-name').value = stockname;
+  document.getElementById('edit-category').value = category1;
+
+  console.log('ticker_active masuk:', ticker_active);
+  //document.getElementById('edit-ticker-active').value = ticker_active;
+
+document.getElementById('edit-ticker-active').checked = ticker_active == 1;
+
+
+
+  $('#editModal').modal('show');
+  console.log('buka editmodal' + ticker_active);
+}
+
+function openDeleteModal(stock_id, code_b) {
+  document.getElementById('delete-id').value = stock_id;
+  document.getElementById('delete-ric-label').textContent = code_b;
+  $('#deleteModal').modal('show');
+}
+
+
+
+async function handleAddRIC(event) {
+  event.preventDefault();
+  const code_b = document.getElementById('ricField').value.trim();
+  const stockname = document.getElementById('nameField').value.trim();
+  const category1 = document.getElementById('categoryField').value.trim();
+  const ticker_active = document.getElementById('tickerField').checked ? 1 : 0;
+  const errorMsg = document.getElementById('addErrorMsg');
+
+  try {
+    const res = await fetch('/add', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ code_b, stockname, category1, ticker_active })
+    });
+
+    const result = await res.json();
+
+    if (result.success) {
+      $('#addRicModal').modal('hide');
+      fetchData();
+      document.getElementById('addRicForm').reset();
+      errorMsg.textContent = '';
+    } else {
+      errorMsg.textContent = result.message || 'Failed to add RIC.';
+    }
+  } catch (err) {
+    console.error('Add error:', err);
+    errorMsg.textContent = 'Server error.';
+  }
+}
+
+async function fetchData() {
+  try {
+    const res = await fetch('/api/stocks');
+    const data = await res.json();
+    allStockData = data; // simpan semua data global
+    const query = document.getElementById("searchInput").value.toLowerCase();
+    const filtered = allStockData.filter(row => {
+      const code_b = row.code_b?.toLowerCase() || "";
+      const stockname = row.stockname?.toLowerCase() || "";
+      return code_b.includes(query) || stockname.includes(query);
+    });
+    renderTable(filtered); // render hasil filter
+   // console.log(filtered);
+  } catch (err) {
+    console.error('Fetch error:', err);
+  }
+}
+function renderTable(data) {
+  const tbody = document.getElementById('stock-body');
+  tbody.innerHTML = '';
+
+  const start = (currentPage - 1) * rowsPerPage;
+  const end = start + rowsPerPage;
+  const paginatedData = data.slice(start, end);
+
+  paginatedData.forEach(row => {
+    const chgClass = row.change1 > 0 ? 'text-success' : row.change1 < 0 ? 'text-danger' : '';
+
+    // ✅ Format update_date_time pakai dayjs
+    const updated = row.update_date_time
+      ? dayjs(row.update_date_time).format("YYYY-MM-DD HH:mm:ss.SSS")
+      : '-';
+
+    const rowHtml = `
+      <tr>
+        <td>${row.code_b}</td>
+       
+        <td>${row.stockname || '-'}</td>
+        <td>${row.last_price ?? '-'}</td>
+        <td class="${chgClass}">${row.change1 ?? '-'}</td>
+        <td class="${chgClass}">${row.percent_change ?? '-'}</td>
+        <td>${row.bid ?? '-'}</td>
+        <td>${row.ask ?? '-'}</td>
+        <td>${row.acc_volume ?? '-'}</td>
+        <td>${updated}</td>
+        <td>
+          <div class="btn-group" role="group">
+            <button class="btn btn-sm btn-warning" 
+              onclick="openEditModal('${row.stock_id}','${row.code_b}','${row.abbrl}','${row.stockname || ''}', '${row.category1}', '${row.ticker_active}')">Edit</button>
+            <button class="btn btn-sm btn-danger" 
+              onclick="openDeleteModal('${row.stock_id}', '${row.code_b}')">Delete</button>
+          </div>
+        </td>
+      </tr>`;
+    tbody.innerHTML += rowHtml;
+  });
+
+
+
+  //document.getElementById('showing-count').textContent = `${start + 1}-${Math.min(end, data.length)} of ${data.length}`;
+  renderPagination(data);
+  document.getElementById('showing-count').textContent = 
+  `${Math.min(start + 1, data.length)}-${Math.min(end, data.length)} of ${data.length}`;
+
+}
+function renderPagination(data) {
+  const pagination = document.getElementById('pagination');
+  if (!pagination) return;
+
+  pagination.innerHTML = '';
+  const pageCount = Math.ceil(data.length / rowsPerPage);
+
+  // Prev
+  const prevLi = document.createElement('li');
+  prevLi.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
+  const prevA = document.createElement('a');
+  prevA.className = 'page-link';
+  prevA.href = '#';
+  prevA.innerHTML = '&laquo;';
+  prevA.onclick = (e) => {
+    e.preventDefault();
+    if (currentPage > 1) {
+      currentPage--;
+      renderTable(data);
+    }
+  };
+  prevLi.appendChild(prevA);
+  pagination.appendChild(prevLi);
+
+  // Nomor halaman (maks 2 item)
+  const pagesToShow = [];
+
+  if (currentPage > 1) pagesToShow.push(currentPage - 1);
+  pagesToShow.push(currentPage);
+  if (currentPage < pageCount) pagesToShow.push(currentPage + 1);
+
+  // Batasi hanya 2 halaman aktif yang ditampilkan
+  const limitedPages = pagesToShow.slice(-2);
+
+  for (let i of limitedPages) {
+    const li = document.createElement('li');
+    li.className = `page-item ${i === currentPage ? 'active' : ''}`;
+
+    const a = document.createElement('a');
+    a.className = 'page-link';
+    a.href = '#';
+    a.textContent = i;
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      currentPage = i;
+      renderTable(data);
+    });
+
+    li.appendChild(a);
+    pagination.appendChild(li);
+  }
+
+  // Next
+  const nextLi = document.createElement('li');
+  nextLi.className = `page-item ${currentPage === pageCount ? 'disabled' : ''}`;
+  const nextA = document.createElement('a');
+  nextA.className = 'page-link';
+  nextA.href = '#';
+  nextA.innerHTML = '&raquo;';
+  nextA.onclick = (e) => {
+    e.preventDefault();
+    if (currentPage < pageCount) {
+      currentPage++;
+      renderTable(data);
+    }
+  };
+  nextLi.appendChild(nextA);
+  pagination.appendChild(nextLi);
+}
+
+
+
+fetchData();
+setInterval(fetchData, 3000);
+</script>
+  <script>
+function filterTable() {
+  currentPage = 1; // Reset ke halaman 1 saat cari
+  const query = document.getElementById("searchInput").value.toLowerCase();
+  const filtered = allStockData.filter(row => {
+    const code_B = row.code_B?.toLowerCase() || "";
+    const stockname = row.stockname?.toLowerCase() || "";
+    return code_B.includes(query) || stockname.includes(query);
+  });
+
+  renderTable(filtered);
+}
+</script>
+<script>
+async function loadServerStatus() {
+try {
+const res = await fetch('/api/server-status');
+const data = await res.json();
+
+
+const now = new Date();
+
+
+data.forEach(server => {
+const { name, host, port, status, last_check, is_active } = server;
+const last = last_check ? new Date(last_check) : null;
+const timeText = last ? last.toLocaleString() : "-";
+const isLate = last ? (now - last) > 30 * 1000 : true;
+
+
+let id = name.toLowerCase().replace("client-refinitiv", "client");
+
+
+const elHost = document.getElementById(`host-${id}`);
+if (elHost) elHost.innerText = `${host}:${port}`;
+
+
+const elTime = document.getElementById(`time-${id}`);
+if (elTime) elTime.innerText = timeText;
+
+
+const statusEl = document.getElementById(`status-${id}`);
+if (statusEl) {
+if (isLate) {
+statusEl.className = "badge badge-danger";
+statusEl.innerText = "OFFLINE";
+} else {
+if (status === "RUNNING") {
+statusEl.className = "badge badge-success";
+statusEl.innerText = "RUNNING";
+} else if (status === "CLOSED") {
+statusEl.className = "badge badge-secondary";
+statusEl.innerText = "CLOSED";
+} else {
+statusEl.className = "badge badge-warning";
+statusEl.innerText = "UNKNOWN";
+}
+}
+}
+
+
+const badgeEl = document.getElementById(`badge-active-${id}`);
+if (badgeEl) {
+if (is_active) {
+badgeEl.classList.remove("d-none");
+} else {
+badgeEl.classList.add("d-none");
+}
+}
+});
+
+
+} catch (err) {
+console.error("❌ Error load server status:", err.message);
+}
+}
+
+
+loadServerStatus();
+setInterval(loadServerStatus, 5000);
+</script>
+
+
+<script>
+document.getElementById("btnRefreshClient")?.addEventListener("click", async () => {
+const btn = document.getElementById("btnRefreshClient");
+const status = document.getElementById("status-client");
+
+
+btn.disabled = true;
+btn.textContent = "⏳ Refreshing...";
+status.className = "badge badge-warning";
+status.textContent = "REFRESHING...";
+
+
+try {
+const res = await fetch("http://localhost:9910/api/trigger-reconnect", {
+method: "POST"
+});
+const data = await res.json();
+if (data.success) {
+status.className = "badge badge-success";
+status.textContent = "RUNNING";
+} else {
+status.className = "badge badge-danger";
+status.textContent = "FAILED";
+}
+} catch (err) {
+status.className = "badge badge-danger";
+status.textContent = "ERROR";
+} finally {
+btn.disabled = false;
+btn.textContent = "🔄 Refresh";
+}
+});
+</script>
+
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+const saved = localStorage.getItem('searchBoxValue');
+if (saved) {
+const input = document.getElementById('searchInput');
+if (input) {
+input.value = saved;
+input.dispatchEvent(new Event('input'));
+}
+localStorage.removeItem('searchBoxValue');
+}
+});
+</script>
+
+<script>
+async function loadTickerMainStatus() {
+  try {
+    const res = await fetch('/api/server-status/TICKER_MAIN');
+    const data = await res.json();
+
+    // Host
+    const hostEl = document.getElementById('host-ticker-main');
+    if (hostEl) hostEl.textContent = `${data.host}:${data.port}`;
+
+    // Status
+    const statusEl = document.getElementById('status-ticker-main');
+    if (statusEl) {
+      statusEl.textContent = data.status || 'UNKNOWN';
+      statusEl.className = 'badge ' + (data.status === 'RUNNING' ? 'badge-success' : 'badge-secondary');
+    }
+
+    // Last Check
+    //const timeEl = document.getElementById('time-ticker-main');
+    //if (timeEl) {
+      //const lastCheck = new Date(data.last_check).toLocaleString('id-ID');
+      //timeEl.textContent = lastCheck;
+    //}
+
+    // ACTIVE Badge
+    const badge = document.getElementById('badge-active-ticker-main');
+    const toggleBtn = document.getElementById('btnToggleMain');
+
+    if (badge && toggleBtn) {
+      if (data.is_active) {
+        badge.className = 'badge badge-success ml-2';
+        badge.textContent = '🟢 ACTIVE';
+
+        toggleBtn.classList.remove('btn-outline-danger');
+        toggleBtn.classList.add('btn-outline-success');
+        toggleBtn.textContent = '🛑 Deactivate';
+      } else {
+        badge.className = 'badge badge-danger ml-2';
+        badge.textContent = '🔴 INACTIVE';
+
+        toggleBtn.classList.remove('btn-outline-success');
+        toggleBtn.classList.add('btn-outline-danger');
+        toggleBtn.textContent = '✅ Activate';
+      }
+    }
+
+  } catch (err) {
+    console.error('❌ Error ambil status:', err.message);
+    const hostEl = document.getElementById('host-ticker-main');
+    if (hostEl) hostEl.textContent = '[Gagal ambil data]';
+  }
+}
+
+async function toggleTickerMainStatus() {
+  try {
+    const res = await fetch('/api/server-status/toggle/TICKER_MAIN', {
+      method: 'POST'
+    });
+
+    const result = await res.json();
+    console.log('🟢 Toggle result:', result);
+
+    if (result.success) {
+      await loadTickerMainStatus();
+    } else {
+      alert('❌ Gagal toggle status (response).');
+    }
+  } catch (err) {
+    console.error('❌ Error saat toggle:', err);
+    alert('❌ Gagal toggle status (exception).');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadTickerMainStatus();
+
+  const toggleBtn = document.getElementById('btnToggleMain');
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', toggleTickerMainStatus);
+  } else {
+    console.warn('⚠️ Tombol #btnToggleMain tidak ditemukan di halaman.');
+  }
+});
+</script>
+
+
+<script>
+async function loadTickerbackupStatus() {
+  try {
+    const res = await fetch('/api/server-status/TICKER_BACKUP');
+    const data = await res.json();
+
+    // Host
+    const hostEl = document.getElementById('host-ticker-backup');
+    if (hostEl) hostEl.textContent = `${data.host}:${data.port}`;
+
+    // Status
+    const statusEl = document.getElementById('status-ticker-backup');
+    if (statusEl) {
+      statusEl.textContent = data.status || 'UNKNOWN';
+      statusEl.className = 'badge ' + (data.status === 'RUNNING' ? 'badge-success' : 'badge-secondary');
+    }
+
+    // Last Check
+    //const timeEl = document.getElementById('time-ticker-backup');
+    //if (timeEl) {
+      //const lastCheck = new Date(data.last_check).toLocaleString('id-ID');
+      //timeEl.textContent = lastCheck;
+    //}
+
+    // ACTIVE Badge
+    const badge = document.getElementById('badge-active-ticker-backup');
+    const toggleBtn = document.getElementById('btnTogglebackup');
+
+    if (badge && toggleBtn) {
+      if (data.is_active) {
+        badge.className = 'badge badge-success ml-2';
+        badge.textContent = '🟢 ACTIVE';
+
+        toggleBtn.classList.remove('btn-outline-danger');
+        toggleBtn.classList.add('btn-outline-success');
+        toggleBtn.textContent = '🛑 Deactivate';
+      } else {
+        badge.className = 'badge badge-danger ml-2';
+        badge.textContent = '🔴 INACTIVE';
+
+        toggleBtn.classList.remove('btn-outline-success');
+        toggleBtn.classList.add('btn-outline-danger');
+        toggleBtn.textContent = '✅ Activate';
+      }
+    }
+
+  } catch (err) {
+    console.error('❌ Error ambil status:', err.message);
+    const hostEl = document.getElementById('host-ticker-backup');
+    if (hostEl) hostEl.textContent = '[Gagal ambil data]';
+  }
+}
+
+async function toggleTickerbackupStatus() {
+  try {
+    const res = await fetch('/api/server-status/toggle/TICKER_BACKUP', {
+      method: 'POST'
+    });
+
+    const result = await res.json();
+    console.log('🟢 Toggle result:', result);
+
+    if (result.success) {
+      await loadTickerbackupStatus();
+    } else {
+      alert('❌ Gagal toggle status (response).');
+    }
+  } catch (err) {
+    console.error('❌ Error saat toggle:', err);
+    alert('❌ Gagal toggle status (exception).');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadTickerbackupStatus();
+
+  const toggleBtn = document.getElementById('btnTogglebackup');
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', toggleTickerbackupStatus);
+  } else {
+    console.warn('⚠️ Tombol #btnTogglebackup tidak ditemukan di halaman.');
+  }
+});
+</script>
+
+
+</body>
+</html>

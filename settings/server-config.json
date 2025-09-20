@@ -1,0 +1,17 @@
+{
+  "active": "BACKUP",
+  "servers": {
+    "MAIN": {
+      "hostname": "10.11.5.106",
+      "port": 15000,
+      "user": "trep_main",
+      "appId": "256"
+    },
+    "BACKUP": {
+      "hostname": "127.0.0.1",
+      "port": 8080,
+      "user": "trep_backup",
+      "appId": "256"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "servers": {
+    "MAIN": {
+      "hostname": "127.0.0.1",
+      "port": 6100
+    },
+    "BACKUP": {
+      "hostname": "127.0.0.1",
+      "port": 6100
+    }
+  }
+}
